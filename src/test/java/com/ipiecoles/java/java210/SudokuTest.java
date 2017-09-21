@@ -10,15 +10,20 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import org.assertj.core.api.Assertions;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING) 
 public class SudokuTest {
 
 
 	@Test
-	public void sudokuDeclarationInitialisationConstante() throws Exception {
+	//Exercice 1
+	public void exo01SudokuDeclarationInitialisationConstante() throws Exception {
 		//Déclarer au niveau de la classe monSudoku, une constante de classe
 		//de type String, nommée FIN_SAISIE contenant le texte "FIN"
+		
 		Field finSaisie = null;
 		try {
 			finSaisie = Sudoku.class.getField("FIN_SAISIE");
@@ -32,8 +37,10 @@ public class SudokuTest {
 	}
 	
 	@Test
-	public void sudokuDeclarationResolu() throws Exception {
+	//Exercice 2
+	public void exo02SudokuDeclarationResolu() throws Exception {
 		//Déclarer au niveau de la classe monSudoku, un booléen nommé resolu initialisé à false
+		
 		Field resolu = null;
 		try {
 			resolu = Sudoku.class.getDeclaredField("resolu");
@@ -45,7 +52,8 @@ public class SudokuTest {
 	}
 	
 	@Test
-	public void sudokuDeclarationTableau() throws Exception {
+	//Exercice 3
+	public void exo03SsudokuDeclarationTableau() throws Exception {
 		//Déclarer au niveau de la classe monSudoku, un tableau à deux dimensions
 		//pouvant contenir des éléments de type short, nommée sudokuAResoudre
 		Field sudokuAResoudre = null;
@@ -58,7 +66,8 @@ public class SudokuTest {
 	}
 	
 	@Test
-	public void sudokuCreerMethodeGetSet() throws Exception {
+	//Exercice 4
+	public void exo04sudokuCreerMethodeGetSet() throws Exception {
 		//Créer une méthode getSudokuAResoudre ne prenant aucun argument
 		//et retournant le tableau sudokuAResoudre
 		Method getSudokuAResoudre = null;
@@ -94,7 +103,8 @@ public class SudokuTest {
 	}
 	
 	@Test
-	public void sudokuInitialisationTableau() throws Exception {
+	//Exercice 5
+	public void exo05SudokuInitialisationTableau() throws Exception {
 		//Dans la méthode Sudoku1(), initialiser le tableau 
 		//pour qu'il puisse contenir tous les éléments du sudoku (3 par 3)
 		Sudoku monSudoku = new Sudoku();
@@ -109,7 +119,8 @@ public class SudokuTest {
 		
 	
 	@Test
-	public void ligneSaisieEstCoherenteLigneNulleVideEspaces() {
+	//Exercice 6
+	public void exo06LigneSaisieEstCoherenteLigneNulleVideEspaces() {
 		//Dans la méthode ligneSaisieEstCoherente, tester le paramètre ligneSaisie 
 		//pour vérifier qu'il n'est pas null, pas vide, ou pas composé uniquement d'espaces
 	    String message = "Les coordonnées du chiffre et/ou sa valeur ne peuvent pas être nulles, vides ou remplies avec des espaces\n";
@@ -122,7 +133,8 @@ public class SudokuTest {
 	
 	
 	@Test
-	public void ligneSaisieEstCoherenteLongeur3() {
+	//Exercice 7
+	public void exo07LigneSaisieEstCoherenteLongeur3() {
 		//Dans la méthode ligneSaisieEstCoherente, tester le paramètre ligneSaisie 
 		//pour vérifier qu'il fait 3 caractères
 	    String message = "Les coordonnées du chiffre et/ou sa valeur doit faire 3 caractères\n";
@@ -133,7 +145,8 @@ public class SudokuTest {
 	}
 	
 	@Test
-	public void ligneSaisieEstCoherenteAbscisse0_8() {
+	//Exercice 8
+	public void exo08LigneSaisieEstCoherenteAbscisse0_8() {
 		//Dans la méthode ligneSaisieEstCoherente, tester le paramètre ligneSaisie 
 		//pour vérifier que le premier caractère est un chiffre entre 0 et 8
 	    String message = "L'abscisse et l'ordonnée doivent être compris entre 0 et 8, la valeur entre 1 et 9\n";
@@ -145,7 +158,8 @@ public class SudokuTest {
 	}
 	
 	@Test
-	public void ligneSaisieEstCoherenteOrdonnee0_8() {
+	//Exercice 9
+	public void exo09LigneSaisieEstCoherenteOrdonnee0_8() {
 		//Dans la méthode ligneSaisieEstCoherente, tester le paramètre ligneSaisie 
 		//pour vérifier que le deuxième caractère est un chiffre entre 0 et 8
 	    String message = "L'abscisse et l'ordonnée doivent être compris entre 0 et 8, la valeur entre 1 et 9\n";
@@ -157,7 +171,8 @@ public class SudokuTest {
 	}
 	
 	@Test
-	public void ligneSaisieEstCoherenteValeur1_9() {
+	//Exercice 10
+	public void exo10LigneSaisieEstCoherenteValeur1_9() {
 		//Dans la méthode ligneSaisieEstCoherente, tester le paramètre ligneSaisie 
 		//pour vérifier que le troisième caractère est un chiffre entre 1 et 9
 	    String message = "L'abscisse et l'ordonnée doivent être compris entre 0 et 8, la valeur entre 1 et 9\n";
@@ -169,7 +184,8 @@ public class SudokuTest {
 	}
 	
 	@Test
-	public void demandeCoordonneesSudoku() {
+	//Exercice 11
+	public void exo11DemandeCoordonneesSudoku() {
 		//Dans la méthode demandeCoordonneesSudoku, lire dans la console les coordonnées de chaque chiffre
 		//que doit contenir le sudoku avant résolution tant que l'utilisateur de renseigne pas la valeur FIN
 		//indiquant la fin de sa saisie. Contrôler la validité de la ligne en appelant la méthode ligneSaisieEstCoherente
@@ -208,7 +224,8 @@ public class SudokuTest {
 	}
 
 	@Test
-	public void testRemplitSudokuATrous() {
+	//Exercice 12
+	public void exo12TestRemplitSudokuATrous() {
 		//Ecrire le contenu de la méthode remplitSudokuATrous
 		Sudoku monSudoku = new Sudoku();
 		
@@ -269,7 +286,8 @@ public class SudokuTest {
 	}
 	
 	@Test
-	public void ecrireSudoku() {
+	//Exercice 13
+	public void exo13EcrireSudoku() {
 		//
 		Sudoku monSudoku = new Sudoku();
 		short[][] tab = {
@@ -307,7 +325,8 @@ public class SudokuTest {
 	}
 	
 	@Test
-	public void resoudreSudoku() {
+	//Exercice 14
+	public void exo14ResoudreSudoku() {
 		//
 		Sudoku monSudoku = new Sudoku();
 		short[][] tab = {
