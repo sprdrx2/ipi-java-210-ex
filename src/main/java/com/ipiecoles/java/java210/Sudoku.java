@@ -2,17 +2,7 @@ package com.ipiecoles.java.java210;
 
 public class Sudoku {
 	
-	
-	/**
-	 * Cette méthode vérifie la cohérence de la ligne saisie par l'utilisateur.
-	 * 
-	 * La ligne ne doit pas être nulle ou vide, ou remplie d'espaces
-	 * La ligne doit faire exactement 3 caractères
-	 * La ligne doit avoir le format XYZ ou X et Y sont compris entre 0 et 8, et Y entre 1 et 9
-	 * 
-	 * @param ligneSaisie la ligne saisie par l'utilisateur
-	 * @return true si la ligne saisie est cohérente, false sinon
-	 */
+
 	public boolean ligneSaisieEstCoherente(String ligneSaisie) {
 		return true;
 	}
@@ -94,14 +84,7 @@ public class Sudoku {
 	public boolean estAutorise(int abscisse, int ordonnee, short chiffre, short[][] sudoku) {
 		return true;
     }
-	
-	/**
-	 * 
-	 * @param abscisse
-	 * @param ordonnee
-	 * @param sudoku
-	 * @return
-	 */
+
 	public boolean resoudre(int abscisse, int ordonnee, short[][] sudoku) {
 		return true;
     }

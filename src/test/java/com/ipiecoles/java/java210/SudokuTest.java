@@ -105,7 +105,7 @@ public class SudokuTest {
 	@Test
 	//Exercice 5
 	public void exo05SudokuInitialisationTableau() throws Exception {
-		//Dans la méthode Sudoku1(), initialiser le tableau 
+		//Dans la méthode Sudoku(), initialiser le tableau
 		//pour qu'il puisse contenir tous les éléments du sudoku (3 par 3)
 		Sudoku monSudoku = new Sudoku();
 		short[][] sudokuNonInitialise = (short[][]) invokeGetter(monSudoku, "sudokuAResoudre");
@@ -122,7 +122,11 @@ public class SudokuTest {
 	//Exercice 6
 	public void exo06LigneSaisieEstCoherenteLigneNulleVideEspaces() {
 		//Dans la méthode ligneSaisieEstCoherente, tester le paramètre ligneSaisie 
-		//pour vérifier qu'il n'est pas null, pas vide, ou pas composé uniquement d'espaces
+		//pour vérifier:
+		//La ligne ne doit pas être nulle ou vide, ou remplie d'espaces
+		//La ligne doit faire exactement 3 caractères
+		//La ligne doit avoir le format XYZ ou X et Y sont compris entre 0 et 8, et Y entre 1 et 9
+
 	    String message = "Les coordonnées du chiffre et/ou sa valeur ne peuvent pas être nulles, vides ou remplies avec des espaces\n";
 	    
 		checkValeurLigneSaisie(null, false, message);
