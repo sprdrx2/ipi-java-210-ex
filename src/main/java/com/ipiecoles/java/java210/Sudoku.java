@@ -3,20 +3,46 @@ package com.ipiecoles.java.java210;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+/**
+ * Classe Sudoku
+ * Permet de rentre un Sudoku à résoudre et le résout si possible
+ */
 public class Sudoku {
+
+	/**
+	 * Chaîne de fin de saisie utilisateur
+	 */
 	public static final String FIN_SAISIE = "FIN";
-	
+
+	/**
+	 * Tableau à deux dimensions réprésentant le sudoku à résoudre
+	 */
 	private short[][] sudokuAResoudre;
+
+	/**
+	 * Booléen permettant de voir si le sudoku a été résolu.
+	 */
 	private boolean resolu = false;
-	
+
+	/**
+	 * Constructeur par défaut
+	 */
 	public Sudoku() {
 		setSudokuAResoudre(new short[9][9]);
 	}
 
+	/**
+	 * Getter sudokuAResoudre
+	 * @return sudokuAResoudre
+     */
 	public short[][] getSudokuAResoudre() {
 		return sudokuAResoudre;
 	}
 
+	/**
+	 * Setter sudokuAResoudre
+	 * @param sudokuAResoudre le sudoku a affecter
+     */
 	public void setSudokuAResoudre(short[][] sudokuAResoudre) {
 		this.sudokuAResoudre = sudokuAResoudre;
 	}
@@ -137,7 +163,12 @@ public class Sudoku {
 		    sudokuAResoudre[abscisse][ordonnee] = valeur;
 		}
     }
-	
+
+	/**
+	 * Méthode utilitaire permettant de passer d'une chaîne de caractère à un int
+	 * @param s la chaîne a transformer
+	 * @return la chaîne sous forme d'entier si la conversion est possible
+     */
 	private int stringToInt(String s) {
 		return Integer.parseInt(s);
 	}
@@ -193,10 +224,10 @@ public class Sudoku {
 	 * 2 : Si le valeur est déjà dans la colone, le chiffre n'est pas autorisé
 	 * 3 : Si la valeur est est déjà dans la boite, le chiffre n'est pas autorisé
 	 * 
-	 * @param abscisse
-	 * @param ordonnee
-	 * @param chiffre
-	 * @param sudoku
+	 * @param abscisse abscisse dans le tableau
+	 * @param ordonnee ordonnée dans le sudoku
+	 * @param chiffre chiffre à tester
+	 * @param sudoku tableau correspondant au sudoku
 	 * @return
 	 */
 	public boolean estAutorise(int abscisse, int ordonnee, short chiffre, short[][] sudoku) {
@@ -229,11 +260,11 @@ public class Sudoku {
     }
 	
 	/**
-	 * 
-	 * @param abscisse
-	 * @param ordonnee
-	 * @param sudoku
-	 * @return
+	 * Méthode récursive permettant de résoudre le sudoku passé en paramètre
+	 * @param abscisse abscisse de l'endroit où on en est
+	 * @param ordonnee ordonnée de l'endroit où on en est
+	 * @param sudoku tableau représentant le sudoku à résoudre
+	 * @return true si le sudoku est résolu à l'issue du traitement, false sinon
 	 */
 	public boolean resoudre(int abscisse, int ordonnee, short[][] sudoku) {
 		//Pour commencer, on teste si on est arrivé au bout de la ligne, si c'est
@@ -273,4 +304,10 @@ public class Sudoku {
 		sudoku[abscisse][ordonnee] = 0;
 		return false;
     }
+
+	@Override
+	public String toString() {
+		super.toString();
+		return "Sudoku{}";
+	}
 }

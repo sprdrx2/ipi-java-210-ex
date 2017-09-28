@@ -288,7 +288,7 @@ public class SudokuTest {
 	@Test
 	//Exercice 13
 	public void exo13EcrireSudoku() {
-		//
+		//Ecrire le contenu de la méthode ecrireSudoku
 		Sudoku monSudoku = new Sudoku();
 		short[][] tab = {
 			    {0, 8, 0, 4, 0, 2, 0, 6, 0},
@@ -327,7 +327,7 @@ public class SudokuTest {
 	@Test
 	//Exercice 14
 	public void exo14ResoudreSudoku() {
-		//
+		//Ecrire le contenu de la méthode resoudre
 		Sudoku monSudoku = new Sudoku();
 		short[][] tab = {
 			    {0, 8, 0, 4, 0, 2, 0, 6, 0},
@@ -361,6 +361,15 @@ public class SudokuTest {
 				"| 3 9 5 | 7 2 1 | 8 4 6 |\n" + 
 				" -----------------------\n");
 		
+	}
+
+	public void exo15JavaDoc(){
+		//Ecrire la JavaDoc de la classe et des méthodes non documentées (hors getter/setter) puis la générer
+
+	}
+
+	public void exo16Debug(){
+		//Debugguer l'application à partir de la classe Main.
 	}
 	
 	private void checkValeurLigneSaisie(String valeur, boolean ok, String message) {
