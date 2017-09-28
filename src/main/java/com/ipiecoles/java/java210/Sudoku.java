@@ -1,7 +1,12 @@
 package com.ipiecoles.java.java210;
 
 public class Sudoku {
-	
+
+	/**
+	 * Constructeur par défaut
+	 */
+	public Sudoku() {
+	}
 
 	public boolean ligneSaisieEstCoherente(String ligneSaisie) {
 		return true;
