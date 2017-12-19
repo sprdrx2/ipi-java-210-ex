@@ -124,9 +124,6 @@ public class SudokuTest {
 		//Dans la méthode ligneSaisieEstCoherente, tester le paramètre ligneSaisie 
 		//pour vérifier:
 		//La ligne ne doit pas être nulle ou vide, ou remplie d'espaces
-		//La ligne doit faire exactement 3 caractères
-		//La ligne doit avoir le format XYZ ou X et Y sont compris entre 0 et 8, et Y entre 1 et 9
-
 	    String message = "Les coordonnées du chiffre et/ou sa valeur ne peuvent pas être nulles, vides ou remplies avec des espaces\n";
 	    
 		checkValeurLigneSaisie(null, false, message);
