@@ -307,8 +307,8 @@ public class SudokuTest {
 	    
 		monSudoku.ecrireSudoku(tab);
 		
-		Assertions.assertThat(outContent.toString()).isEqualTo(
-				" -----------------------\n" + 
+		Assertions.assertThat(outContent.toString()).isEqualToNormalizingNewlines(
+				" -----------------------\n" +
 				"|   8   | 4   2 |   6   |\n" + 
 				"|   3 4 |       | 9 1   |\n" + 
 				"| 9 6   |       |   8 4 |\n" + 
@@ -346,7 +346,7 @@ public class SudokuTest {
 	    
 	    Assertions.assertThat(monSudoku.resoudre(0, 0, tab)).isTrue();
 	    monSudoku.ecrireSudoku(tab);
-		Assertions.assertThat(outContent.toString()).isEqualTo(
+		Assertions.assertThat(outContent.toString()).isEqualToNormalizingNewlines(
 				" -----------------------\n" + 
 				"| 1 8 7 | 4 9 2 | 5 6 3 |\n" + 
 				"| 5 3 4 | 6 7 8 | 9 1 2 |\n" + 
@@ -380,7 +380,7 @@ public class SudokuTest {
 	    Sudoku monSudoku = new Sudoku();
 	    resultat = monSudoku.ligneSaisieEstCoherente(valeur);
 		Assertions.assertThat(resultat).as("La vérification de la valeur " + valeur + " devrait renvoyer : " + ok).isEqualTo(ok);
-		Assertions.assertThat(outContent.toString()).as("Le message affiché devrait être : " + message).isEqualTo(message);
+		Assertions.assertThat(outContent.toString()).as("Le message affiché devrait être : " + message).isEqualToNormalizingNewlines(message);
 	}
 	
 	private void invokeSetter(Object obj, String variableName, Object variableValue){
