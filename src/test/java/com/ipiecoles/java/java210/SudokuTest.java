@@ -14,7 +14,7 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING) 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class SudokuTest {
 
 
@@ -23,7 +23,7 @@ public class SudokuTest {
 	public void exo01SudokuDeclarationInitialisationConstante() throws Exception {
 		//Déclarer au niveau de la classe monSudoku, une constante de classe
 		//de type String, nommée FIN_SAISIE contenant le texte "FIN"
-		
+
 		Field finSaisie = null;
 		try {
 			finSaisie = Sudoku.class.getField("FIN_SAISIE");
@@ -35,12 +35,12 @@ public class SudokuTest {
 		Assertions.assertThat(Modifier.isStatic(finSaisie.getModifiers())).as("Le champ FIN_SAISIE n'est pas une constante de classe").isTrue();
 		Assertions.assertThat(Modifier.isPublic(finSaisie.getModifiers())).as("Le champ FIN_SAISIE n'est pas accessible").isTrue();
 	}
-	
+
 	@Test
 	//Exercice 2
 	public void exo02SudokuDeclarationResolu() throws Exception {
 		//Déclarer au niveau de la classe monSudoku, un booléen nommé resolu initialisé à false
-		
+
 		Field resolu = null;
 		try {
 			resolu = Sudoku.class.getDeclaredField("resolu");
@@ -50,7 +50,7 @@ public class SudokuTest {
 			Assertions.fail("Aucun champ nommé resolu n'a été trouvé");
 		}
 	}
-	
+
 	@Test
 	//Exercice 3
 	public void exo03SsudokuDeclarationTableau() throws Exception {
@@ -64,7 +64,7 @@ public class SudokuTest {
 			Assertions.fail("Aucun champ nommé sudokuAResoudre n'a été trouvé");
 		}
 	}
-	
+
 	@Test
 	//Exercice 4
 	public void exo04sudokuCreerMethodeGetSet() throws Exception {
@@ -78,13 +78,13 @@ public class SudokuTest {
 			Assertions.fail("Aucune méthode nommée getSudokuAResoudre n'a été trouvée");
 		}
 		Assertions.assertThat(Modifier.isPublic(getSudokuAResoudre.getModifiers())).as("La méthode getSudokuAResoudre n'est pas publique").isTrue();
-		
+
 		//Créer une méthode setSudokuAResoudre prenant en argument un tableau de short à deux dimensions
 		//et qui affecte cet argument au tableau sudokuAResoudre
 		Method setSudokuAResoudre = null;
 		try {
 			setSudokuAResoudre = Sudoku.class.getDeclaredMethod("setSudokuAResoudre", short[][].class);
-			
+
 		} catch (NoSuchMethodException exception) {
 			Assertions.fail("Aucune méthode nommée setSudokuAResoudre n'a été trouvée");
 		}
@@ -92,7 +92,7 @@ public class SudokuTest {
 		Assertions.assertThat(setSudokuAResoudre.getParameterTypes()[0].getTypeName()).isEqualTo("short[][]");
 		Assertions.assertThat(setSudokuAResoudre.getReturnType()).as("La méthode setSudokuAResoudre doit retourner le bon type").isEqualTo(void.class);
 		Assertions.assertThat(Modifier.isPublic(getSudokuAResoudre.getModifiers())).as("La méthode getSudokuAResoudre n'est pas publique").isTrue();
-		
+
 		Sudoku monSudoku = new Sudoku();
 		short[][] tabASetter = new short[4][4];
 		short[] tabASetter1 = new short[4];
@@ -101,7 +101,7 @@ public class SudokuTest {
 		invokeSetter(monSudoku, "sudokuAResoudre", tabASetter);
 		Assertions.assertThat(invokeGetter(monSudoku, "sudokuAResoudre")).isEqualTo(tabASetter);
 	}
-	
+
 	@Test
 	//Exercice 5
 	public void exo05SudokuInitialisationTableau() throws Exception {
@@ -194,7 +194,7 @@ public class SudokuTest {
 		//que doit contenir le sudoku avant résolution tant que l'utilisateur de renseigne pas la valeur FIN
 		//indiquant la fin de sa saisie. Contrôler la validité de la ligne en appelant la méthode ligneSaisieEstCoherente
 		//précédemment développée. Mettre les coordonnées saisies dans un tableau de String est le retourner en fin de méthode
-		
+
 		ByteArrayInputStream inContent;
 		inContent = new ByteArrayInputStream("015\n024\nFIN".getBytes());
 	    System.setIn(inContent);
@@ -215,10 +215,10 @@ public class SudokuTest {
 	    Assertions.assertThat(coordonnees).isNotEmpty();
 	    Assertions.assertThat(coordonnees.length >= 81).isTrue();
 	    Assertions.assertThat(coordonnees[0]).isNull();
-	    
+
 	    inContent = new ByteArrayInputStream("".getBytes());
 	    System.setIn(inContent);
-	    
+
 	    coordonnees = Sudoku.demandeCoordonneesSudoku();
 	    Assertions.assertThat(coordonnees).isNotNull();
 	    Assertions.assertThat(coordonnees).isNotEmpty();
@@ -291,7 +291,7 @@ public class SudokuTest {
 	@Test
 	//Exercice 13
 	public void exo13EcrireSudoku() {
-		//
+		//Ecrire le contenu de la méthode ecrireSudoku
 		Sudoku monSudoku = new Sudoku();
 		short[][] tab = {
 			    {0, 8, 0, 4, 0, 2, 0, 6, 0},
@@ -393,7 +393,16 @@ public class SudokuTest {
 				" -----------------------\n");
 		
 	}
-	
+
+	public void exo15JavaDoc(){
+		//Ecrire la JavaDoc de la classe et des méthodes non documentées (hors getter/setter) puis la générer
+
+	}
+
+	public void exo16Debug(){
+		//Debugguer l'application à partir de la classe Main.
+	}
+
 	private void checkValeurLigneSaisie(String valeur, boolean ok, String message) {
 		ByteArrayOutputStream outContent;
 		boolean resultat;
