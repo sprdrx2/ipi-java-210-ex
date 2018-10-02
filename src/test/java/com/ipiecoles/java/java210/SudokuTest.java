@@ -394,12 +394,12 @@ public class SudokuTest {
 		
 	}
 
-	public void exo15JavaDoc(){
+	public void exo16JavaDoc(){
 		//Ecrire la JavaDoc de la classe et des méthodes non documentées (hors getter/setter) puis la générer
 
 	}
 
-	public void exo16Debug(){
+	public void exo17Debug(){
 		//Debugguer l'application à partir de la classe Main.
 	}
 
