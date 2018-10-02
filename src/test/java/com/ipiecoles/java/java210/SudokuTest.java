@@ -195,12 +195,11 @@ public class SudokuTest {
 		//indiquant la fin de sa saisie. Contrôler la validité de la ligne en appelant la méthode ligneSaisieEstCoherente
 		//précédemment développée. Mettre les coordonnées saisies dans un tableau de String est le retourner en fin de méthode
 		
-		Sudoku monSudoku = new Sudoku();
 		ByteArrayInputStream inContent;
 		inContent = new ByteArrayInputStream("015\n024\nFIN".getBytes());
 	    System.setIn(inContent);
 	    
-	    String[] coordonnees = monSudoku.demandeCoordonneesSudoku();
+	    String[] coordonnees = Sudoku.demandeCoordonneesSudoku();
 	    Assertions.assertThat(coordonnees).isNotNull();
 	    Assertions.assertThat(coordonnees).isNotEmpty();
 	    Assertions.assertThat(coordonnees.length >= 81).isTrue();
@@ -211,7 +210,7 @@ public class SudokuTest {
 		inContent = new ByteArrayInputStream("FIN".getBytes());
 	    System.setIn(inContent);
 	    
-	    coordonnees = monSudoku.demandeCoordonneesSudoku();
+	    coordonnees = Sudoku.demandeCoordonneesSudoku();
 	    Assertions.assertThat(coordonnees).isNotNull();
 	    Assertions.assertThat(coordonnees).isNotEmpty();
 	    Assertions.assertThat(coordonnees.length >= 81).isTrue();
@@ -220,7 +219,7 @@ public class SudokuTest {
 	    inContent = new ByteArrayInputStream("".getBytes());
 	    System.setIn(inContent);
 	    
-	    coordonnees = monSudoku.demandeCoordonneesSudoku();
+	    coordonnees = Sudoku.demandeCoordonneesSudoku();
 	    Assertions.assertThat(coordonnees).isNotNull();
 	    Assertions.assertThat(coordonnees).isNotEmpty();
 	    Assertions.assertThat(coordonnees.length >= 81).isTrue();
@@ -327,10 +326,38 @@ public class SudokuTest {
 				" -----------------------\n");
 		
 	}
-	
+
 	@Test
 	//Exercice 14
-	public void exo14ResoudreSudoku() {
+	public void exo14estAutorise() {
+		//Ecrire le contenu de la estAutorise
+		short[][] tab = {
+				{0, 8, 0, 4, 0, 2, 0, 6, 0},
+				{0, 3, 4, 0, 0, 0, 9, 1, 0},
+				{9, 6, 0, 0, 0, 0, 0, 8, 4},
+				{0, 0, 0, 2, 1, 6, 0, 0, 0},
+				{0, 0, 0, 0, 0, 0, 0, 0, 0},
+				{0, 0, 0, 3, 5, 7, 0, 0, 0},
+				{8, 4, 0, 0, 0, 0, 0, 7, 5},
+				{0, 2, 6, 0, 0, 0, 1, 3, 0},
+				{0, 9, 0, 7, 0, 1, 0, 4, 0},
+		};
+
+		Assertions.assertThat(Sudoku.estAutorise(0,0, (short) 2, tab)).isFalse();
+		Assertions.assertThat(Sudoku.estAutorise(0,4, (short) 1, tab)).isFalse();
+		Assertions.assertThat(Sudoku.estAutorise(0,2, (short) 5, tab)).isTrue();
+		Assertions.assertThat(Sudoku.estAutorise(0,0, (short) 3, tab)).isFalse();
+
+		Assertions.assertThat(Sudoku.estAutorise(0,0, (short) 2, tab)).isFalse();
+		Assertions.assertThat(Sudoku.estAutorise(0,4, (short) 1, tab)).isFalse();
+		Assertions.assertThat(Sudoku.estAutorise(0,2, (short) 5, tab)).isTrue();
+		Assertions.assertThat(Sudoku.estAutorise(0,0, (short) 3, tab)).isFalse();
+
+	}
+
+	@Test
+	//Exercice 15
+	public void exo15ResoudreSudoku() {
 		//
 		Sudoku monSudoku = new Sudoku();
 		short[][] tab = {
@@ -372,8 +399,7 @@ public class SudokuTest {
 		boolean resultat;
 		outContent = new ByteArrayOutputStream();
 	    System.setOut(new PrintStream(outContent));
-	    Sudoku monSudoku = new Sudoku();
-	    resultat = monSudoku.ligneSaisieEstCoherente(valeur);
+	    resultat = Sudoku.ligneSaisieEstCoherente(valeur);
 		Assertions.assertThat(resultat).as("La vérification de la valeur " + valeur + " devrait renvoyer : " + ok).isEqualTo(ok);
 		Assertions.assertThat(outContent.toString()).as("Le message affiché devrait être : " + message).isEqualTo(message);
 	}

@@ -8,7 +8,7 @@ public class Sudoku {
 	public Sudoku() {
 	}
 
-	public boolean ligneSaisieEstCoherente(String ligneSaisie) {
+	public static boolean ligneSaisieEstCoherente(String ligneSaisie) {
 		return true;
 	}
 	
@@ -25,7 +25,7 @@ public class Sudoku {
 	 *
 	 * @return Un tableau comportant les coordonnées des chiffres présents dans le sudoku à résoudre
 	 */
-	public String[] demandeCoordonneesSudoku() {
+	public static String[] demandeCoordonneesSudoku() {
 		return null;
 	}
 	
@@ -86,7 +86,7 @@ public class Sudoku {
 	 * @param sudoku
 	 * @return
 	 */
-	public boolean estAutorise(int abscisse, int ordonnee, short chiffre, short[][] sudoku) {
+	public static boolean estAutorise(int abscisse, int ordonnee, short chiffre, short[][] sudoku) {
 		return true;
     }
 
