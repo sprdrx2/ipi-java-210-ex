@@ -216,14 +216,6 @@ public class SudokuTest {
 	    Assertions.assertThat(coordonnees.length >= 81).isTrue();
 	    Assertions.assertThat(coordonnees[0]).isNull();
 
-	    inContent = new ByteArrayInputStream("".getBytes());
-	    System.setIn(inContent);
-
-	    coordonnees = Sudoku.demandeCoordonneesSudoku();
-	    Assertions.assertThat(coordonnees).isNotNull();
-	    Assertions.assertThat(coordonnees).isNotEmpty();
-	    Assertions.assertThat(coordonnees.length >= 81).isTrue();
-	    Assertions.assertThat(coordonnees[0]).isNull();
 	}
 
 	@Test
@@ -310,7 +302,7 @@ public class SudokuTest {
 	    
 		monSudoku.ecrireSudoku(tab);
 		
-		Assertions.assertThat(outContent.toString()).isEqualTo(
+		Assertions.assertThat(outContent.toString().trim()).isEqualToNormalizingNewlines(
 				" -----------------------\n" + 
 				"|   8   | 4   2 |   6   |\n" + 
 				"|   3 4 |       | 9 1   |\n" + 
@@ -377,7 +369,7 @@ public class SudokuTest {
 	    
 	    Assertions.assertThat(monSudoku.resoudre(0, 0, tab)).isTrue();
 	    monSudoku.ecrireSudoku(tab);
-		Assertions.assertThat(outContent.toString()).isEqualTo(
+		Assertions.assertThat(outContent.toString().trim()).isEqualToNormalizingNewlines(
 				" -----------------------\n" + 
 				"| 1 8 7 | 4 9 2 | 5 6 3 |\n" + 
 				"| 5 3 4 | 6 7 8 | 9 1 2 |\n" + 
@@ -410,7 +402,7 @@ public class SudokuTest {
 	    System.setOut(new PrintStream(outContent));
 	    resultat = Sudoku.ligneSaisieEstCoherente(valeur);
 		Assertions.assertThat(resultat).as("La vérification de la valeur " + valeur + " devrait renvoyer : " + ok).isEqualTo(ok);
-		Assertions.assertThat(outContent.toString()).as("Le message affiché devrait être : " + message).isEqualTo(message);
+		Assertions.assertThat(outContent.toString().trim()).as("Le message affiché devrait être : " + message).isEqualToNormalizingNewlines(message);
 	}
 	
 	private void invokeSetter(Object obj, String variableName, Object variableValue){
