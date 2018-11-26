@@ -87,7 +87,7 @@ public class Sudoku {
 	public void remplitSudokuATrous(String[] tableauCoordonnees) {
 	    int i; int abscisse; int ordonnee; int valeur;
 	    for(i = 0; i < tableauCoordonnees.length; i++) {
-	        if(tableauCoordonnees[i].isEmpty() || tableauCoordonnees[i] == null) { break; }
+	        if(tableauCoordonnees[i] == null || tableauCoordonnees[i].isEmpty()) { break; }
 	        abscisse = stringToInt(tableauCoordonnees[i].substring(0,1));
             ordonnee = stringToInt(tableauCoordonnees[i].substring(1,2));
             valeur = stringToInt(tableauCoordonnees[i].substring(2,3));

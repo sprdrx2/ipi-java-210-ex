@@ -5,10 +5,16 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] Args) {
-        System.out.println(Sudoku.FIN_SAISIE);
         Sudoku s = new Sudoku();
-        s.remplitSudokuATrous(Sudoku.demandeCoordonneesSudoku());
-        s.ecrireSudoku(s.sudokuAResoudre);
+        String[] tab = Sudoku.demandeCoordonneesSudoku();
+        s.remplitSudokuATrous(tab);
+        s.ecrireSudoku(s.getSudokuAResoudre());
+        if(s.resoudre(0,0,s.getSudokuAResoudre())) {
+            s.ecrireSudoku(s.getSudokuAResoudre());
+        } else {
+            System.out.println("Pas de solution.");
+        }
+
     }
 
 }
